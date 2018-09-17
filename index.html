@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html class=height100percent>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>PGB Example Window</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="buttons.css" />
+    <style>
+    body {margin:0px;font-size:large;}
+    .hidden {visibility:collapse;display:none;}
+    .expose {visibility:visible;display:block;} /* Here for completeness only. */
+    .height100percent {height:100%} 
+    .copyright {padding:5px;align:left;font-style:italic;font-size:small;}
+    #header {margin:0;padding:0;}
+    #exitApp {margin:1em;float:right;}
+    /* background colors */
+    .r {background-color:hsl(0,25%,75%);}   /* pastel-red */
+    .g {background-color:hsl(135,25%,75%);} /* pastel-gree */
+    .b {background-color:hsl(225,25%,75%);} /* pastel-blue */
+    .a {background-color:hsl(45,25%,75%);}  /* pastel-gold */
+    .p {background-color:hsl(270,25%,75%);} /* pastel-purple */
+    </style>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+</head>
+<body onload="onLoad()" class=height100percent>
+    <div id=header class="button button-block button-large">
+        <img align=left src=favicon-48x48.png>
+        PGB Example Window
+        <button id=exitApp onclick='navigator.app.exitApp()' class="button button-pill button-primary button-large" style="margin:0.1em;float:right;">Exit</button>
+    </div>
+
+    <button onclick='alert()' class="button button-pill button-action button-large">Alert</button>
+    <button onclick='confirm("Today is great.")' class="button button-pill button-action button-large">Confirm</button>
+    <button onclick='prompt("Is the sky blue?")' class="button button-pill button-action button-large">Prompt</button>
+
+    <div id=windowStuff>windowStuff Not Loaded.</div>
+
+    <div class="copyright">
+        <span id=copyright>Created by Jesus Monroy, Jr. &copy; 2018</span>
+    </div>
+</body>
+    <script type="text/javascript">
+    //
+    function onButtonClick() {
+        alert("button clicked.");
+    }
+    //
+    // Use the "screen" object available in most webbrowser
+    // 
+    function windowStuff() {
+        var windowStuff = "" +
+        "<p class=p /><b>window.innerWidth:</b> "  + window.innerWidth +
+        "<p class=a /><b>window.innerHeight:</b> " + window.innerHeight +
+        "<p class=p /><b>window.outerWidth:</b> "  + window.outerWidth +
+        "<p class=a /><b>window.outerHeight:</b> " + window.outerHeight;
+
+        document.getElementById('windowStuff').innerHTML = windowStuff;
+    }
+    //
+    function onLoad() {
+        alert("body loaded.");
+    }
+    //
+    function onDeviceReady() {
+        alert("device ready.");
+        navigatorStuff();
+    }
+    //
+    // Wait for PhoneGap to load
+    document.addEventListener("deviceready", onDeviceReady, false);
+    </script>
+</html>
