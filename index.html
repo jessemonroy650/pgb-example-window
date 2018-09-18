@@ -29,9 +29,12 @@
         <button id=exitApp onclick='navigator.app.exitApp()' class="button button-pill button-primary button-large" style="margin:0.1em;float:right;">Exit</button>
     </div>
 
-    <button onclick='alert()' class="button button-pill button-action button-large">Alert</button>
-    <button onclick='confirm("Today is great.")' class="button button-pill button-action button-large">Confirm</button>
-    <button onclick='prompt("Is the sky blue?")' class="button button-pill button-action button-large">Prompt</button>
+    <button onclick='alert("This is an alert().")' class="button button-pill button-action button-large">Alert</button>
+    <button onclick='confirmDialog("This is a great day.")' class="button button-pill button-action button-large">Confirm</button>
+    <button onclick='promptDialog("Please input a response.", "Dummy")' class="button button-pill button-action button-large">Prompt</button>
+
+    <div id=confirmResponse>confirmResponse</div>
+    <div id=promptResponse>promptResponse</div>
 
     <div id=windowStuff>windowStuff Not Loaded.</div>
 
@@ -41,8 +44,14 @@
 </body>
     <script type="text/javascript">
     //
-    function onButtonClick() {
-        alert("button clicked.");
+    function confirmDialog(message) {
+        response = confirm(message)
+        document.getElementById('confirmResponse').innerHTML = response;
+    }
+    //
+    function promptDialog(message, defaultResponse) {
+        response = prompt(message, defaultResponse)
+        document.getElementById('promptResponse').innerHTML = response;
     }
     //
     // Use the "screen" object available in most webbrowser
